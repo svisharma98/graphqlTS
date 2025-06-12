@@ -1,4 +1,5 @@
-import { gql } from 'graphql-tag';  // 👈 THIS import is mandatory
+// typeDef.ts
+import { gql } from 'graphql-tag';
 
 export const typeDefs = gql`
   type User {
@@ -14,8 +15,11 @@ export const typeDefs = gql`
   }
 
   type Query {
+    getTodos:[User]
+    getUserByName(name: String!): User
     me: User
     users: [User!]!
+    user(id: ID!): User
   }
 
   type Mutation {

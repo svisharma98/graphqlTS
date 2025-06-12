@@ -1,7 +1,14 @@
-import UserModel from "../model/User";
+// userResolver.ts
+import UserModel from "../model/User.js";
 
 export const resolvers = {
     Query: {
+        getTodos: async () =>
+            await UserModel.find(),
+        getUserByName:
+            async (_: any, { name }:
+                { name: String }) =>
+                await UserModel.findOne({ name }),
         users: async () => await UserModel.find(),
         user: async (_: any, { id }: { id: string }) => await UserModel.findById(id),
     },

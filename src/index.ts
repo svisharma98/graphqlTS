@@ -5,19 +5,9 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
-import { gql } from 'graphql-tag';
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello Vishwajeet from Apollo Server v4!',
-  },
-};
+import { typeDefs } from "./schema/typeDef.js";
+import { resolvers } from "./resolvers/userResolver.js";
 
 const startServer = async () => {
   const app = express();
