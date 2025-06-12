@@ -24,6 +24,10 @@ const startServer = async () => {
   app.use(bodyParser.json());
   app.use('/graphql', expressMiddleware(server));
 
+  app.get("/test", (req, res, next) => {
+    res.send("Working fine");
+  });
+
   await mongoose.connect('mongodb://localhost:27017/mydb');
 
   httpServer.listen(4000, () => {
